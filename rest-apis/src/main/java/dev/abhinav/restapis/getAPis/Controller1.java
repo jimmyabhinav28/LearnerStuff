@@ -1,12 +1,25 @@
 package dev.abhinav.restapis.getAPis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +28,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.abhinav.restapis.ParametersAndHeaders;
+import dev.abhinav.restapis.getAPis.dto.MathsOperation;
+import dev.abhinav.restapis.getAPis.dto.TwoNumbersMathsOperationResponse;
+import dev.abhinav.restapis.getAPis.dto.TwoNumbersOperationRequest;
 
 @RestController
 
 public class Controller1 {
+
+	@Autowired
+	Services services;
 
 	/**
 	 * This endpoint shows how to read all parameters in a request.
@@ -67,5 +86,27 @@ public class Controller1 {
 		parametersAndHeaders.setPathParameters(mandatoryPathParams);
 		parametersAndHeaders.setQueryParameters(mandatoryQueryParams);
 		return parametersAndHeaders;
+	}
+
+	@GetMapping(path = "/numberOps/{requesterEmailId}")
+	public TwoNumbersMathsOperationResponse operateOnTwoNumbers(
+			@PathVariable(name = "requesterEmailId") String requestorEmailId, @RequestParam(name = "num1") Double num1,
+			@RequestParam(name = "num2") Double num2, @NotBlank @RequestHeader(name = "operation") String operation) {
+		validateParametersOperateOnTwoNumbers(num1, num2, requestorEmailId);
+		return services.operate(num1, num2, operation, requestorEmailId, true);
+	}
+
+	private void validateParametersOperateOnTwoNumbers(Double num1, Double num2,
+			String requestorEmailAddress) {
+		TwoNumbersOperationRequest req = new TwoNumbersOperationRequest(num1, num2, requestorEmailAddress);
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		System.out.println("email id is "+ requestorEmailAddress);
+		Set<ConstraintViolation<TwoNumbersOperationRequest>> constraintVoilations = validator.validate(req);
+		List<ConstraintViolation<TwoNumbersOperationRequest>> constraintVoilationsList = new ArrayList(
+				constraintVoilations);
+		if (constraintVoilations.size() > 0)
+			throw new ValidationException(constraintVoilationsList.get(0).getMessage());
+
 	}
 }
