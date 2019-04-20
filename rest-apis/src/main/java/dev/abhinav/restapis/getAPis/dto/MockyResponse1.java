@@ -30,12 +30,12 @@ public class MockyResponse1 {
 	private String surname;
 	
 	@JsonProperty("date_of_birth")
-	private Date dateOfBirth;
+	private String dateOfBirth;
 	
 	@JsonProperty("lucky_number")
 	private Integer luckyNumber;
 	
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@JsonProperty("call_time")
-	private Date callTime;
+	private String callTime;
 }

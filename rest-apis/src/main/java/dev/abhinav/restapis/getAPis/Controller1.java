@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dev.abhinav.restapis.ParametersAndHeaders;
 import dev.abhinav.restapis.getAPis.dto.MathsOperation;
+import dev.abhinav.restapis.getAPis.dto.MockyResponse1;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersMathsOperationResponse;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersOperationRequest;
 
@@ -94,6 +95,12 @@ public class Controller1 {
 			@RequestParam(name = "num2") Double num2, @NotBlank @RequestHeader(name = "operation") String operation) {
 		validateParametersOperateOnTwoNumbers(num1, num2, requestorEmailId);
 		return services.operate(num1, num2, operation, requestorEmailId, true);
+	}
+	
+	@GetMapping(path="/clientExample")
+	public MockyResponse1 makeCallToMocky()
+	{
+		return services.getResponseFromMocky();
 	}
 
 	private void validateParametersOperateOnTwoNumbers(Double num1, Double num2,
