@@ -13,4 +13,5 @@ public class ParametersAndHeaders {
 	private Map<String, String> headers;
 	private Map<String, String> pathParameters;
 	private Map<String, String> queryParameters;
+	private Map<String, String> requestBody;
 }
