@@ -1,13 +1,25 @@
 package dev.abhinav.restapis.getAPis;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import dev.abhinav.restapis.getAPis.dto.MathsOperation;
 import dev.abhinav.restapis.getAPis.dto.MathsOperationsInCapsOnly;
+import dev.abhinav.restapis.getAPis.dto.MockyResponse1;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersMathsOperationResponse;
 
 @Component
 public class Services {
+	
+	@Autowired
+	RestTemplate restTemplate;
 
 	public TwoNumbersMathsOperationResponse operate(Double num1, Double num2, String operation, String requestorEmailId,
 			boolean onlyCapsEnumWalaCase) {
@@ -64,4 +76,28 @@ public class Services {
 		return response;
 
 	}
+	
+	/*
+	 * public MockyResponse1 getResponseFromMocky() { MockyResponse1
+	 * mockyResponse1=new MockyResponse1(); //pass headers, pass query paremeters,
+	 * pass pathParameters, pass request body to a call UriComponentsBuilder
+	 * builder=UriComponentsBuilder.newInstance();
+	 * //http://www.mocky.io/v2/5cb8c3034c0000c51ad3d73d
+	 * builder=builder.host("www.mocky.io"); builder=builder.port(80);
+	 * builder=builder.path("v2/5cb8c3034c0000c51ad3d73d"); MultiValueMap<String,
+	 * List<String>> queryParams = new LinkedMultiValueMap<>();
+	 * queryParams.put("key1","value1"); builder.queryParams(queryParams);
+	 * 
+	 * //add some headers now
+	 * 
+	 * MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+	 * headers.put("hkey1","hValue1"); HttpEntity entity=new HttpEntity(headers);
+	 * 
+	 * //Only headers are relevant in Get Request. Body is ignored RestTemplate
+	 * restTemplate=new RestTemplate(); ResponseEntity<X> response =
+	 * restTemplate.exchange(builder.build().toUri(), HttpMethod.GET,
+	 * requestEntity,X);
+	 * 
+	 * return mockyResponse1; }
+	 */
 }
