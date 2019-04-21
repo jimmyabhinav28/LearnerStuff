@@ -32,9 +32,10 @@ import dev.abhinav.restapis.getAPis.dto.MathsOperation;
 import dev.abhinav.restapis.getAPis.dto.MockyResponse1;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersMathsOperationResponse;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersOperationRequest;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
-
+@Slf4j
 public class Controller1 {
 
 	@Autowired
@@ -98,9 +99,16 @@ public class Controller1 {
 	}
 	
 	@GetMapping(path="/clientExample")
-	public MockyResponse1 makeCallToMocky()
+	public MockyResponse1 makeCallToMocky() throws GETEndPointException
 	{
-		return services.getResponseFromMocky();
+		
+		try {
+			return services.getResponseFromMocky();
+		} catch (DownStreamAPICallException e) {
+			String message= "Error getting response from mocky";
+			log.error(message,e);
+			throw new GETEndPointException(message, e);
+		}
 	}
 
 	private void validateParametersOperateOnTwoNumbers(Double num1, Double num2,

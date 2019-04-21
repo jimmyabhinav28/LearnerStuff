@@ -1,6 +1,8 @@
 package dev.abhinav.restapis.getAPis;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -16,16 +18,19 @@ import dev.abhinav.restapis.getAPis.dto.MathsOperation;
 import dev.abhinav.restapis.getAPis.dto.MathsOperationsInCapsOnly;
 import dev.abhinav.restapis.getAPis.dto.MockyResponse1;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersMathsOperationResponse;
-import dev.abhinav.restapis.utils.RestClientUtils;
+import dev.abhinav.restapis.utils.GenericRestClient;
+import dev.abhinav.restapis.utils.RestClientException;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class Services {
 
 	@Autowired
 	RestTemplate restTemplate;
 
 	@Autowired
-	RestClientUtils restClientUtils;
+	GenericRestClient restClientUtils;
 
 	public TwoNumbersMathsOperationResponse operate(Double num1, Double num2, String operation, String requestorEmailId,
 			boolean onlyCapsEnumWalaCase) {
@@ -83,11 +88,15 @@ public class Services {
 
 	}
 
-	public MockyResponse1 getResponseFromMocky() {
+	public MockyResponse1 getResponseFromMocky() throws DownStreamAPICallException {
 		MockyResponse1 mockyResponse1 = new MockyResponse1();
 		String hostname = "www.mocky.io";
 		Integer port = 80;
-		String resourcePath = "/v2/5cbb39ff31000064194d74c4";
+		String resourcePath = "/{mockyVersion}/5cbb39ff31000064194d74c4";
+
+		Map<String, String> pathVariables = new LinkedHashMap<>();
+		// pathVariables.put("mockyVersion", "v2");
+		pathVariables.put("wrongPathParameterKey", "v2");
 
 		MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
 		queryParams.add("key1", "value1");
@@ -99,8 +108,15 @@ public class Services {
 
 		String scheme = "http";
 
-		ResponseEntity<MockyResponse1> response = restClientUtils.makeGetCall(scheme, hostname, port, resourcePath,
-				null, queryParams, headers, MockyResponse1.class);
+		ResponseEntity<MockyResponse1> response = null;
+		try {
+			response = restClientUtils.makeGetCall(scheme, hostname, port, resourcePath, pathVariables, queryParams,
+					headers, MockyResponse1.class);
+		} catch (RestClientException e) {
+			String message= "Error getting response from mocky";
+			log.error(message,e);
+			throw new DownStreamAPICallException(message, e);
+		}
 		return response.getBody();
 	}
 
