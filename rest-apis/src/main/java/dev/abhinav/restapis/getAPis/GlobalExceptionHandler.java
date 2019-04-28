@@ -30,4 +30,18 @@ public class GlobalExceptionHandler extends DefaultHandlerExceptionResolver {
 		return errorResponse;
 	}
 	
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(code=HttpStatus.SERVICE_UNAVAILABLE)
+	@ResponseBody
+	public GenericErrorResponse handleError(Exception e)
+	{
+		log.error(e.getMessage(),e);
+		GenericErrorResponse errorResponse=new GenericErrorResponse();
+		errorResponse.setErrorMessage(e.getMessage());
+		errorResponse.setErrorCode("SOME_ERROR");
+		errorResponse.setResponseId(UUID.randomUUID().toString());
+		errorResponse.setRequestId(MDC.get("X-B3-TraceId"));
+		return errorResponse;
+	}
+	
 }
