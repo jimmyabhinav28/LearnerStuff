@@ -31,7 +31,9 @@ public class MetaData
 	{
 		//picks request id from MDC
 		//forms a response id and logs it against response id
-		requestId=MDC.get("X-B3-TraceId:-");
+//		requestId=MDC.get("X-B3-TraceId:-");
+		requestId=UUID.randomUUID().toString();
+		//log.info(MDC.getCopyOfContextMap().keySet().toString());
 		if(requestId==null)
 		{
 			String message="no request id present in MDC";

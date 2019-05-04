@@ -25,10 +25,10 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		
-		registry.addInterceptor(interceptorLowestPrecedence);
-		registry.addInterceptor(interceptorHighestPrecedence);
-		registry.addInterceptor(interceptor1);
-		registry.addInterceptor(interceptor2);
+		//registry.addInterceptor(interceptorLowestPrecedence);
+		//registry.addInterceptor(interceptorHighestPrecedence);
+		//registry.addInterceptor(interceptor1);
+		//registry.addInterceptor(interceptor2);
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}
 }

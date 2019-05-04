@@ -11,16 +11,9 @@ import javax.validation.Validation;
 import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-
-import org.hibernate.validator.constraints.CreditCardNumber;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -28,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.abhinav.restapis.ParametersAndHeaders;
-import dev.abhinav.restapis.getAPis.dto.MathsOperation;
 import dev.abhinav.restapis.getAPis.dto.MockyResponse1;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersMathsOperationResponse;
 import dev.abhinav.restapis.getAPis.dto.TwoNumbersOperationRequest;

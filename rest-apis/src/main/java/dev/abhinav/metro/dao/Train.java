@@ -1,4 +1,4 @@
-package dev.abhinav.metro.entities;
+package dev.abhinav.metro.dao;
 
 import java.util.Date;
 
@@ -17,7 +17,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Train {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -32,7 +31,7 @@ public class Train {
 	@Column(name = "service_begin_date")
 	Date serviceBeginDate;
 
-	@Column(name = "service_begin_date")
+	@Column(name = "last_maintainance_date")
 	Date lastMaintainanceDate;
 
 	@Column(name = "vendor_name")

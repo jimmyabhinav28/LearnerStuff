@@ -15,17 +15,17 @@ public class TrainService {
 	@Autowired
 	TrainDAO trainDAO;
 	
-	public TrainDTO findTrainByTrainSpecialName(String specialName) throws TrainNotFoundException
+	public TrainDTO findTrainByTrainSpecialName(String specialName) throws Exception
 	{
 		return new TrainDTO(trainDAO.findTrainBySpecialName(specialName));
 	}
 	
-	public TrainDTO findTrainByVendor(String vendorName) throws TrainNotFoundException
+	public TrainDTO findTrainByVendor(String vendorName) throws Exception
 	{
 		return new TrainDTO(trainDAO.findTrainByVendor(vendorName));
 	}
 	
-	public TrainDTO findTrainByServiceBeginDate(Date beginDate) throws TrainNotFoundException
+	public TrainDTO findTrainByServiceBeginDate(Date beginDate) throws Exception
 	{
 		return new TrainDTO(trainDAO.findTrainByServiceBeginDate(beginDate));
 	}

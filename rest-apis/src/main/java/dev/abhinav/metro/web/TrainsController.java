@@ -19,7 +19,7 @@ public class TrainsController {
 
 	@GetMapping(path = "/{train_special_name}")
 	public TrainDetailsResponse findByTrainSpecialName(@PathVariable(name = "train_special_name") String specialName)
-			throws MetaDataCreateException, TrainNotFoundException {
+			throws Exception {
 		TrainDetailsResponse response = new TrainDetailsResponse();
 		response.setMetaData(new MetaData());
 		response.setData(trainService.findTrainByTrainSpecialName(specialName));

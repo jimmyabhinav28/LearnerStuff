@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import dev.abhinav.metro.entities.Train;
+import dev.abhinav.metro.dao.Train;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,11 +27,16 @@ public class TrainDTO {
 	@JsonProperty("vendor")
 	private String vendorName;
 
-	public TrainDTO(Train train) {
-		this.id = train.getId();
-		this.lastMaintainanceDate = train.getLastMaintainanceDate();
-		this.serviceStartDate = train.getServiceBeginDate();
-		this.vendorName = train.getVendorName();
-		this.specialName=train.getSpecialName();
+	public TrainDTO(Train train) throws Exception {
+		if(train!=null)
+		{
+			this.id = train.getId();
+			this.lastMaintainanceDate = train.getLastMaintainanceDate();
+			this.serviceStartDate = train.getServiceBeginDate();
+			this.vendorName = train.getVendorName();
+			this.specialName=train.getSpecialName();
+		}
+		else
+			throw new Exception("train parameter is null");
 	}
 }
