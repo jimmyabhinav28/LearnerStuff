@@ -1,4 +1,4 @@
-package dev.abhinav.metro.dao;
+package dev.abhinav.metro.entities;
 
 import java.util.Date;
 

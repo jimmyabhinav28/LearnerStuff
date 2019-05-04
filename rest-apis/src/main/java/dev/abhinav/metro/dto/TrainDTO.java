@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import dev.abhinav.metro.dao.Train;
+import dev.abhinav.metro.entities.Train;
 import lombok.Getter;
 import lombok.Setter;
 
