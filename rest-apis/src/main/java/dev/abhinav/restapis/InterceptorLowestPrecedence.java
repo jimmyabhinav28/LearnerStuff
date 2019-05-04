@@ -1,8 +1,11 @@
 package dev.abhinav.restapis;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.util.bcel.classfile.EnumElementValue;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
@@ -24,7 +27,17 @@ public class InterceptorLowestPrecedence implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		log.info("Prehandled in interceptor with lowest precendence");
-		throw new Exception("just like that");
+		//throw new Exception("just like that");
+		Enumeration<String> allHeaderNames= request.getHeaderNames();
+		while(allHeaderNames.hasMoreElements())
+		{
+			String header=allHeaderNames.nextElement();
+			String headerValue=request.getHeader(header);
+			log.info(header+" : "+headerValue);
+		}
+		
+		return true;
+		
 	}
 	
 	@Override

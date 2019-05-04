@@ -1,0 +1,13 @@
+package dev.abhinav.metro.dao;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/metro")
+public class TrainsController 
+{
+	@GetMapping(path="/{train_special_name}")
+	public 
+}

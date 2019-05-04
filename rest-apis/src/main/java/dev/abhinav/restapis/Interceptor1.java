@@ -1,5 +1,10 @@
 package dev.abhinav.restapis;
 
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,7 +26,22 @@ public class Interceptor1 implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		log.info("Prehandled in interceptor 1");
+		Enumeration<String> allHeaderNames= request.getHeaderNames();
+		while(allHeaderNames.hasMoreElements())
+		{
+			String header=allHeaderNames.nextElement();
+			String headerValue=request.getHeader(header);
+			log.info(header+" : "+headerValue);
+		}
+		
+		String body=extractPostRequestBody(request);
+		log.info(body);
+		
 		return true;
+	}
+	
+	private String extractPostRequestBody(HttpServletRequest request) throws IOException {
+		return request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 	}
 	
 	@Override
