@@ -20,10 +20,10 @@ public class Route {
 	@Column(name="route_id")
 	Long routeId;
 	
-	@Column(name="route_to")
+	@Column(name="route_from")
 	String routeStartingPoint;
 	
-	@Column(name = "route_from")
+	@Column(name = "route_to")
 	String routeDestination;
 	
 	@Column(name = "start_date")
