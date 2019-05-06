@@ -3,6 +3,7 @@ package dev.abhinav.metro.dto;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import dev.abhinav.metro.entities.Station;
 import dev.abhinav.metro.entities.Train;
@@ -22,13 +23,16 @@ public class StationDTO {
 	@JsonProperty("start_date")
 	private Date startDate;
 
+	@JsonProperty("station_incharge_name")
+	String stationInchargeName;
 
 	public StationDTO(Station station) throws Exception {
 		if(station!=null)
 		{
-			this.stationId = station.getStationId();
+			this.stationId = station.getId();
 			this.stationName = station.getStationName();
 			this.startDate = station.getStart_date();
+			this.stationInchargeName=station.getStationIncharge().getInchargeName();
 		}
 		else
 			throw new Exception("station has null value");
