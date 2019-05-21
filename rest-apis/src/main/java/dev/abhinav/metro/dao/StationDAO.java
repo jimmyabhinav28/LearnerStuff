@@ -32,4 +32,19 @@ public class StationDAO {
 		}
 		return stations.get(0);
 	}
+	
+	public Station save(Station station)
+	{
+		return stationRepository.save(station);
+	}
+	
+	public void delete(Station station)
+	{
+		stationRepository.delete(station);;
+	}
+
+	public void deleteById(Long stationId) {
+		stationRepository.deleteById(stationId);
+		
+	}
 }

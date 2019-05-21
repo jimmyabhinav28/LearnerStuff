@@ -2,6 +2,9 @@ package dev.abhinav.metro.dto;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dev.abhinav.metro.entities.StationIncharge;
@@ -19,9 +22,11 @@ public class StationInchargeDTO {
 	@JsonProperty("id")
 	Long id;
 
+	@NotNull
 	@JsonProperty("metro_employee_id")
 	Long metroEmployeeId;
 
+	@NotBlank
 	@JsonProperty("incharge_name")
 	String inchargeName;
 

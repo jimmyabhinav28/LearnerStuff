@@ -2,6 +2,8 @@ package dev.abhinav.metro.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -23,16 +25,21 @@ public class StationDTO {
 	@JsonProperty("start_date")
 	private Date startDate;
 
-	@JsonProperty("station_incharge_name")
-	String stationInchargeName;
+	@JsonProperty("station_incharge_details")
+	StationInchargeDTO stationIncharge;
 
+	@JsonManagedReference
+	@JsonProperty("station_engineer_details")
+	StationEngineerDTO stationEngineer;
+	
 	public StationDTO(Station station) throws Exception {
 		if(station!=null)
 		{
 			this.stationId = station.getId();
 			this.stationName = station.getStationName();
 			this.startDate = station.getStart_date();
-			this.stationInchargeName=station.getStationIncharge().getInchargeName();
+			this.stationIncharge=new StationInchargeDTO(station.getStationIncharge());
+			this.stationEngineer=new StationEngineerDTO(station.getStationEngineer());
 		}
 		else
 			throw new Exception("station has null value");

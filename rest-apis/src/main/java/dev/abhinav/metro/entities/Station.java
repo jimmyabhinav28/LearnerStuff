@@ -1,6 +1,7 @@
 package dev.abhinav.metro.entities;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -39,5 +43,9 @@ public class Station {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="station_incharge_id", referencedColumnName = "id")
 	StationIncharge stationIncharge;
+	
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="station_engineer_id", referencedColumnName = "id")
+	StationEngineer stationEngineer;
 
 }
