@@ -16,35 +16,46 @@ import dev.abhinav.metro.entities.Station;
 import dev.abhinav.metro.service.StationService;
 
 @RestController
-	@RequestMapping("/station")
-	public class StationController {
-		@Autowired
-		StationService stationService;
+@RequestMapping("/station")
+public class StationController {
+	@Autowired
+	StationService stationService;
 
-		@GetMapping(path = "/{station_name}")
-		public StationDtlsResponse findByStationName(@PathVariable(name = "station_name") String stationName)
-				throws Exception {
-			StationDtlsResponse response = new StationDtlsResponse();
-			response.setData(stationService.findByStationName(stationName));
-			return response;
-		}
-		
-		@PostMapping(path="/addNewStation")
-		public StationDTO addStation(@Valid @RequestBody CreateStationRequest createStationRequest) throws Exception
-		{
-			StationDTO savedStationDetails=null;
-			savedStationDetails=stationService.save(createStationRequest);
-			return savedStationDetails;
-			
-		}
-		
-		@DeleteMapping("/deleteStation/{station_name}")
-		public StationDTO deleteStation(@PathVariable(name = "station_name") String stationName) throws Exception
-		{
-			StationDTO station=stationService.findByStationName(stationName);
-			stationService.delete(station);
-			return station;
-		}
-
-		
+	@GetMapping(path = "/{station_name}")
+	public StationDtlsResponse findByStationName(@PathVariable(name = "station_name") String stationName)
+			throws Exception {
+		StationDtlsResponse response = new StationDtlsResponse();
+		response.setData(stationService.findByStationName(stationName));
+		return response;
 	}
+
+	@PostMapping(path = "/addNewStation")
+	public StationDTO addStation(@Valid @RequestBody CreateStationRequest createStationRequest) throws Exception {
+		StationDTO savedStationDetails = null;
+		savedStationDetails = stationService.save(createStationRequest);
+		return savedStationDetails;
+
+	}
+
+	/*
+	 * @DeleteMapping("/deleteStation/{station_name}") public StationDTO
+	 * deleteStation(@PathVariable(name = "station_name") String stationName) throws
+	 * Exception { StationDTO station=stationService.findByStationName(stationName);
+	 * stationService.delete(station.getStationId()); return station; }
+	 */
+
+	@DeleteMapping("/deleteStation/{stationId}")
+	public void deleteStation(@PathVariable(name = "stationId") Long stationId) throws Exception {
+//		StationDTO station = stationService.findByStationName(stationName);
+		stationService.delete(stationId);
+//		return station;
+	}
+	
+	@DeleteMapping("/deleteStation2/{station_name}")
+	public void deleteStation2(@PathVariable(name = "station_name") String stationName) throws Exception {
+//		StationDTO station = stationService.findByStationName(stationName);
+		stationService.deleteByStationName(stationName);
+//		return station;
+	}
+
+}

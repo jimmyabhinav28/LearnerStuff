@@ -47,4 +47,9 @@ public class StationDAO {
 		stationRepository.deleteById(stationId);
 		
 	}
+
+	public void deleteByStationName(String stationName) {
+		//stationRepository.deleteByStationName(stationName);
+		stationRepository.deleteStationAndStationEngineerByStationName(stationName);
+	}
 }

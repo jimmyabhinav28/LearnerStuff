@@ -51,10 +51,21 @@ public class StationService {
 		return new StationDTO(station);
 	}
 
-	public void delete(StationDTO station) {
-		stationDAO.deleteById(station.getStationId());
+	/*
+	 * public void delete(StationDTO station) {
+	 * stationDAO.deleteById(station.getStationId());
+	 * 
+	 * }
+	 */
+	
+	public void delete(Long stationId) {
+		stationDAO.deleteById(stationId);
 		
 	}
-	
+
+	public void deleteByStationName(String stationName) {
+		stationDAO.deleteByStationName(stationName);
+		
+	}
 	
 }
