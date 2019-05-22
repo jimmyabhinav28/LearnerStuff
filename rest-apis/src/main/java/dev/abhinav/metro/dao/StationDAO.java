@@ -32,4 +32,12 @@ public class StationDAO {
 		}
 		return stations.get(0);
 	}
+	
+	public void deleteByName(String name) {
+		stationRepository.deleteByName(name);
+	}
+	
+	public void deleteUsingQuery(String name) {
+		stationRepository.deleteUsingQuery(name);
+	}
 }

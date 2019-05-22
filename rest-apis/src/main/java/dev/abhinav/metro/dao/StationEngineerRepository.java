@@ -1,18 +1,13 @@
 package dev.abhinav.metro.dao;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import dev.abhinav.metro.entities.Station;
+import dev.abhinav.metro.entities.StationEngineer;
 
-
-public interface StationRepository extends JpaRepository<Station, Long>{
-
-	List<Station> findByStationName(String specialName);
+public interface StationEngineerRepository extends JpaRepository<StationEngineer, Long>{
 	
 	@Transactional
 	@Modifying
@@ -20,7 +15,7 @@ public interface StationRepository extends JpaRepository<Station, Long>{
 	
 	@Transactional
 	@Modifying
-	@Query("delete from station where station_name = ?")
+	@Query("delete from station_engineer where engineer_name = ?1")
 	void deleteUsingQuery(String name);
-	
+
 }

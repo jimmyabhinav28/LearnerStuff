@@ -39,5 +39,9 @@ public class Station {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="station_incharge_id", referencedColumnName = "id")
 	StationIncharge stationIncharge;
+	
+	@OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinColumn(name="station_engineer_id", referencedColumnName = "id")
+	StationEngineer stationEngineer;
 
 }

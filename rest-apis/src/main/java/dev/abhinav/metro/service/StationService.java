@@ -17,4 +17,13 @@ public class StationService {
 		return new StationDTO(stationDAO.findByStationName(stationName));
 	}
 	
+	public void deleteByName(String name) {
+		stationDAO.deleteByName(name);
+		
+	}
+	public void deleteUsingQuery(String name) {
+		stationDAO.deleteUsingQuery(name);
+		
+	}
+	
 }
