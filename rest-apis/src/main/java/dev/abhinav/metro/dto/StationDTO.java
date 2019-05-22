@@ -2,6 +2,7 @@ package dev.abhinav.metro.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -31,6 +32,7 @@ public class StationDTO {
 	@JsonProperty("station_incharge")
 	StationIncharge stationIncharge;
 	
+//	@JsonBackReference
 	@JsonProperty("station_engineer")
 	StationEngineer stationEngineer;
 

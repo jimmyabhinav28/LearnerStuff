@@ -33,14 +33,14 @@ import dev.abhinav.metro.service.StationService;
 			return response;
 		}
 		
-		@DeleteMapping(path = "delete/{station_engineer_name}")
-		public void deleteByName(@PathVariable(name = "station_engineer_name") String stationrName){
-			stationService.deleteByName(stationrName);
-		}
-		
-		@DeleteMapping(path = "/deleteQuery/{station_engineer_name}")
-		public void deleteUsingQuery(@PathVariable(name = "station_engineer_name") String stationName){
-			stationService.deleteUsingQuery(stationName);
-		}
+	/*
+	 * @DeleteMapping(path = "delete/{station_engineer_name}") public void
+	 * deleteByName(@PathVariable(name = "station_engineer_name") String
+	 * stationrName){ stationService.deleteByName(stationrName); }
+	 * 
+	 * @DeleteMapping(path = "/deleteQuery/{station_engineer_name}") public void
+	 * deleteUsingQuery(@PathVariable(name = "station_engineer_name") String
+	 * stationName){ stationService.deleteUsingQuery(stationName); }
+	 */
 	}
 

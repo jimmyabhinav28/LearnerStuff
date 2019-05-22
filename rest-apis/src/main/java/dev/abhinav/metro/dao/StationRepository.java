@@ -14,13 +14,17 @@ public interface StationRepository extends JpaRepository<Station, Long>{
 
 	List<Station> findByStationName(String specialName);
 	
-	@Transactional
-	@Modifying
-	void deleteByName(String name);
-	
-	@Transactional
-	@Modifying
-	@Query("delete from station where station_name = ?")
-	void deleteUsingQuery(String name);
+	/*
+	 * @Transactional
+	 * 
+	 * @Modifying void deleteByName(String name);
+	 * 
+	 * @Transactional
+	 * 
+	 * @Modifying
+	 * 
+	 * @Query("delete s from Station s where s.stationName = ?1") void
+	 * deleteUsingQuery(String name);
+	 */
 	
 }
