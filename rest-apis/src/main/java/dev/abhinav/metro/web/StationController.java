@@ -33,6 +33,11 @@ import dev.abhinav.metro.service.StationService;
 			return response;
 		}
 		
+		
+		@DeleteMapping(path = "/delete/{station_id}") 
+		public void deleteById(@PathVariable(name = "station_id") Long stationId){ 
+			stationService.deleteById(stationId); }
+		
 	/*
 	 * @DeleteMapping(path = "delete/{station_engineer_name}") public void
 	 * deleteByName(@PathVariable(name = "station_engineer_name") String

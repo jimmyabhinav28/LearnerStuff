@@ -30,11 +30,11 @@ public class StationDTO {
 	String stationInchargeName;
 	
 	@JsonProperty("station_incharge")
-	StationIncharge stationIncharge;
+	StationInchargeDTO stationIncharge;
 	
 //	@JsonBackReference
 	@JsonProperty("station_engineer")
-	StationEngineer stationEngineer;
+	StationEngineerDTO stationEngineer;
 
 	public StationDTO(Station station) throws Exception {
 		if(station!=null)
@@ -43,8 +43,8 @@ public class StationDTO {
 			this.stationName = station.getStationName();
 			this.startDate = station.getStart_date();
 			this.stationInchargeName=station.getStationIncharge().getInchargeName();
-			this.stationIncharge=station.getStationIncharge();
-			this.stationEngineer=station.getStationEngineer();
+			this.stationIncharge=new StationInchargeDTO(station.getStationIncharge());
+			this.stationEngineer=new StationEngineerDTO(station.getStationEngineer());
 		}
 		else
 			throw new Exception("station has null value");

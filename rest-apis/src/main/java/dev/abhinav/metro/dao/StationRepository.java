@@ -14,6 +14,10 @@ public interface StationRepository extends JpaRepository<Station, Long>{
 
 	List<Station> findByStationName(String specialName);
 	
+	//@Transactional
+	//@Modifying
+	void deleteById(Long id);
+	
 	/*
 	 * @Transactional
 	 * 

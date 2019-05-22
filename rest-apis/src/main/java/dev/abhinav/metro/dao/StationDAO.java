@@ -33,6 +33,10 @@ public class StationDAO {
 		return stations.get(0);
 	}
 	
+	 public void deleteById(Long id) { 
+		 stationRepository.deleteById(id);
+	 }
+	
 	/*
 	 * public void deleteByName(String name) { stationRepository.deleteByName(name);
 	 * }

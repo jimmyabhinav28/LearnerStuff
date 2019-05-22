@@ -17,6 +17,10 @@ public class StationService {
 		return new StationDTO(stationDAO.findByStationName(stationName));
 	}
 	
+	
+	public void deleteById(Long id) { 
+		stationDAO.deleteById(id);
+	}
 	/*
 	 * public void deleteByName(String name) { stationDAO.deleteByName(name);
 	 * 
