@@ -19,7 +19,7 @@ public class Table3Service {
 	
 	public Table3DTO save(Table3DTO table3dto)
 	{
-		Table3Entity entity=convertTable3DtpToTable3Entity(table3dto);
+		Table3Entity entity=convertTable3DtoToTable3Entity(table3dto);
 		entity= table3DAO.save(entity);
 		return convertTable3EntityToTable3DTO(entity);
 	}
@@ -32,6 +32,7 @@ public class Table3Service {
 			table3DAO.deleteById(entity.getId());
 		}
 	}
+	
 	
 	public void deleteById(Long id)
 	{
@@ -50,14 +51,17 @@ public class Table3Service {
 		return table3dtos;
 	}
 	
-	public Table3Entity getById(Long id)
+	public Table3DTO getById(Long id)
 	{
-		return table3DAO.getById(id);
+		Table3DTO dto=null;
+		Table3Entity entity= table3DAO.getById(id);
+		dto=convertTable3EntityToTable3DTO(entity);
+		return dto;
 	}
 	
 	public Table3DTO update(Table3DTO dto) throws Table3ServiceException
 	{
-		Table3Entity entity=convertTable3DtpToTable3Entity(dto);
+		Table3Entity entity=convertTable3DtoToTable3Entity(dto);
 		try {
 			entity=table3DAO.update(entity);
 		} catch (Table3DAOException e) {
@@ -77,13 +81,13 @@ public class Table3Service {
 		return dto;
 	}
 	
-	public static Table3Entity convertTable3DtpToTable3Entity(Table3DTO dto)
+	public static Table3Entity convertTable3DtoToTable3Entity(Table3DTO dto)
 	{
 		Table3Entity entity=new Table3Entity();
 		entity.setAttribute1(dto.getAttribute1());
 		entity.setId(dto.getId());
 		entity.setTable1Entity(Table1Service.convertTable1DTOToTable1Entity(dto.getTable1dto()));
-		entity.setTable2Entity(Table2Service.convertTable2DTOToTable2Entity(dto.getTable2dto()));
+		entity.setTable2Entity(Table2Service.convertTable2DTOToTable2Entity(dto.getTable2dto(),entity));
 		return entity;
 	}
 	}

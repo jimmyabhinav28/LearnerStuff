@@ -1,5 +1,6 @@
 package dev.abhinav.jpaPractice.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -18,6 +19,7 @@ public class Table3DTO {
 	@JsonProperty("table1_entity")
 	Table1DTO table1dto;
 	
+	@JsonManagedReference
 	@JsonProperty("table2_entity")
 	Table2DTO table2dto;
 }

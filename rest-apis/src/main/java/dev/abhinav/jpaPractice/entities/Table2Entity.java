@@ -26,6 +26,7 @@ public class Table2Entity {
 	String attribute1;
 
 	//bidirectional one to one
-	@OneToOne(mappedBy = "table2Entity",fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	Table3Entity entity3;
+	@OneToOne(mappedBy = "table2Entity",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+//	@OneToOne(mappedBy = "table2Entity",fetch = FetchType.EAGER)
+	Table3Entity table3entity;
 }

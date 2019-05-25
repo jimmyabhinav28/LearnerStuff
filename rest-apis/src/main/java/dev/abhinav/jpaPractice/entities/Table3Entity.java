@@ -28,12 +28,14 @@ public class Table3Entity {
 
 	//unidirectional one to one
 	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "table1_id")
+	@JoinColumn(name = "table1_id",referencedColumnName = "id")
 	Table1Entity table1Entity;
 	
 	//bidirectional one to one mapping
-	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "table2_id")
+//	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+	@OneToOne(fetch = FetchType.EAGER)
+//	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "table2_id",referencedColumnName = "id")
 	Table2Entity table2Entity;
 
 }
