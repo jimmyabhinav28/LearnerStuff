@@ -22,6 +22,7 @@ public class Table3DTO {
 	@JsonProperty("table1")
 	private Table1 table1;
 	
+	//you are referring Table2 but Table2DTO par JsonBackReference lagayi thi...waah !
 	@JsonManagedReference
 	@JsonProperty("table2")
 	private Table2 table2;	

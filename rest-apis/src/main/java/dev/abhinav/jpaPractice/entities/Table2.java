@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +27,7 @@ public class Table2 {
 	@Column(name = "attribute1")
 	String attribute1;
 	
+	@JsonBackReference
 	@OneToOne(mappedBy = "table2", fetch = FetchType.EAGER)
 	Table3 table3;
 
