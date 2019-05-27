@@ -30,13 +30,16 @@ public class Table2Service {
 		//the problem though is that we have a mapsId case here and we have made the foreign key as the primary key
 		//hence table3_id is not nullable
 		//the way to go about, hence will be to get a table3DTO from the table2DTO and save it
-		Table3DTO table3dto=table2dto.getTable3dto();
-		if(table3dto==null)
-			throw new Table2ServiceException("cannot store a table3 entity without a table 3 entity");
-		Table3Entity table3Entity=Table3Service.convertTable3DtoToTable3Entity(table3dto, true);
-		table3Entity=table3dao.save(table3Entity);
-		return convertTable2EntityToTable2DTO(table3Entity.getTable2entity(), true);
-		
+		/*
+		 * Table3DTO table3dto=table2dto.getTable3dto(); if(table3dto==null) throw new
+		 * Table2ServiceException("cannot store a table3 entity without a table 3 entity"
+		 * ); Table3Entity
+		 * table3Entity=Table3Service.convertTable3DtoToTable3Entity(table3dto, true);
+		 * table3Entity=table3dao.save(table3Entity); return
+		 * convertTable2EntityToTable2DTO(table3Entity.getTable2entity(), true);
+		 */
+		Table2Entity entity=table2dao.save(convertTable2DTOToTable2Entity(table2dto, true));
+		return convertTable2EntityToTable2DTO(entity, true);
 	}
 
 	public Table2DTO update(Table2DTO table2dto) throws Table2ServiceException
