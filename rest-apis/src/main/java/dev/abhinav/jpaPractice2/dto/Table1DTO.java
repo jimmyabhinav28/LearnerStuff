@@ -16,7 +16,6 @@ public class Table1DTO {
 	@JsonProperty(value = "attribute1_value")
 	String attribute1;
 	
-	@JsonManagedReference
 	@JsonProperty("table3")
 	Table3DTO table3dto;
 

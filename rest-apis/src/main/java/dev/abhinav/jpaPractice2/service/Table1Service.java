@@ -4,16 +4,54 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import dev.abhinav.jpaPractice2.dao.Table1DAO;
+import dev.abhinav.jpaPractice2.dao.Table1DAOException;
+import dev.abhinav.jpaPractice2.dao.Table3DAO;
 import dev.abhinav.jpaPractice2.dto.Table1DTO;
+import dev.abhinav.jpaPractice2.dto.Table3DTO;
 import dev.abhinav.jpaPractice2.entities.Table1Entity;
 import dev.abhinav.jpaPractice2.entities.Table3Entity;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class Table1Service {
 	
 	@Autowired
 	Table1DAO table1dao;
 	
+	@Autowired
+	Table3DAO table3dao;
+	
+	public Table1DTO save(Table1DTO table1dto) throws Table1ServiceException
+	{
+		if(table1dto.getTable3dto()==null)
+		{
+			log.warn("this is not going to work. A null primary key is not allowed.");
+		}
+		//this works wonderfully because we are following the navigation
+		Table1Entity entity=table1dao.save(convertTable1DTOToTable1Entity(table1dto));
+		return convertTable1EntityToTable1DTO(entity);
+		
+	}
+
+	public Table1DTO update(Table1DTO table1dto) throws Table1ServiceException
+	{
+		Table1Entity entity=convertTable1DTOToTable1Entity(table1dto);
+		try {
+			entity=table1dao.update(entity);
+		} catch (Table1DAOException e) {
+			e.printStackTrace();
+			throw new Table1ServiceException("error updating table1 entry",e);
+		}
+		return convertTable1EntityToTable1DTO(entity);
+		
+	}
+	
+	public void deleteById(Long id) throws Table1ServiceException
+	{
+		table1dao.delete(id);
+	}
+
  public Table1DTO getById(Long id)
  {
 	 return convertTable1EntityToTable1DTO(table1dao.getTable1EntityById(id));
@@ -28,7 +66,8 @@ public class Table1Service {
  {
 	 Table1DTO dto=new Table1DTO();
 	 dto.setAttribute1(entity.getAttribute1());
-	 dto.setTable3dto(Table3Service.convertTable3EntityToTable3DTO(entity.getTable3(),entity.getTable3().getTable2entity()));
+	 if(entity.getTable3()!=null)
+	 dto.setTable3dto(Table3Service.convertTable3EntityToTable3DTO(entity.getTable3(),true));
 	 dto.setId(entity.getId());
 	 return dto;
  }
@@ -38,7 +77,8 @@ public class Table1Service {
 	 Table1Entity entity=new Table1Entity();
 	 entity.setId(dto.getId());
 	 entity.setAttribute1(dto.getAttribute1());
-	 entity.setTable3(Table3Service.convertTable3DtoToTable3Entity(dto.getTable3dto()));
+	 if(dto.getTable3dto()!=null)
+	 entity.setTable3(Table3Service.convertTable3DtoToTable3Entity(dto.getTable3dto(),true));
 	 return entity;
  }
 }
