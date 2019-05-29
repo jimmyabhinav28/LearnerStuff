@@ -20,7 +20,7 @@ public class Table3DTO {
 	@JsonProperty(value = "attribute1_value")
 	String attribute1;
 	
-	//@JsonBackReference
+	@JsonBackReference
 	@JsonInclude(Include.NON_NULL)
 	@JsonProperty("table2_entity")
 	Table2DTO table2dto;

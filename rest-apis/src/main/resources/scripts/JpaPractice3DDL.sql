@@ -27,7 +27,7 @@ CONSTRAINT FOREIGN KEY (table3_id) REFERENCES table3(id)
 
 
 
-use jpapractice3;
+use jpaPractice3;
 
 insert into table3(attribute1) values('table3entry1');
 insert into table3(attribute1) values('table3entry2');
