@@ -1,4 +1,4 @@
-package dev.abhinav.jpaPractice2.dto;
+package dev.abhinav.jpaPractice1.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

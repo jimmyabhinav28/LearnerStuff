@@ -1,12 +1,12 @@
-package dev.abhinav.jpaPractice2.dao;
+package dev.abhinav.jpaPractice1.dao;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import dev.abhinav.jpaPractice2.entities.Table1Entity;
-import dev.abhinav.jpaPractice2.service.Table1Repository;
+import dev.abhinav.jpaPractice1.entities.Table1Entity;
+import dev.abhinav.jpaPractice1.service.Table1Repository;
 
 @Component
 public class Table1DAO {

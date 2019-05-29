@@ -1,16 +1,14 @@
-package dev.abhinav.jpaPractice.dao;
+package dev.abhinav.jpaPractice1.dao;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import dev.abhinav.jpaPractice.entities.Table1Entity;
-import dev.abhinav.jpaPractice.entities.Table2Entity;
-import dev.abhinav.jpaPractice.entities.Table3Entity;
-import dev.abhinav.jpaPractice.service.Table1Repository;
-import dev.abhinav.jpaPractice.service.Table2Repository;
-import dev.abhinav.jpaPractice.service.Table3Repository;
+import dev.abhinav.jpaPractice1.entities.Table3Entity;
+import dev.abhinav.jpaPractice1.service.Table1Repository;
+import dev.abhinav.jpaPractice1.service.Table2Repository;
+import dev.abhinav.jpaPractice1.service.Table3Repository;
 
 @Component
 public class Table3DAO {
@@ -23,11 +21,6 @@ public class Table3DAO {
 	Table2Repository table2Repository;
 
 	public Table3Entity save(Table3Entity table3Entity) {
-		Table1Entity table1Entity=table1Repository.save(table3Entity.getTable1Entity());
-		table3Entity.setTable1Entity(table1Entity);
-		
-		Table2Entity table2Entity=table2Repository.save(table3Entity.getTable2Entity());
-		table3Entity.setTable2Entity(table2Entity);
 		return table3Repository.save(table3Entity);
 	}
 
@@ -57,8 +50,6 @@ public class Table3DAO {
 		if (storedEntity == null)
 			throw new Table3DAOException("no entity with the given id exists");
 		storedEntity.setAttribute1(entity.getAttribute1());
-		storedEntity.setTable1Entity(entity.getTable1Entity());
-		storedEntity.setTable2Entity(entity.getTable2Entity());
 		storedEntity = table3Repository.save(storedEntity);
 		return storedEntity;
 	}

@@ -1,4 +1,4 @@
-package dev.abhinav.jpaPractice2.web;
+package dev.abhinav.jpaPractice1.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.abhinav.jpaPractice2.dto.Table3DTO;
-import dev.abhinav.jpaPractice2.service.Table3Service;
-import dev.abhinav.jpaPractice2.service.Table1Service;
-import dev.abhinav.jpaPractice2.service.Table1ServiceException;
-import dev.abhinav.jpaPractice2.service.Table2Service;
-import dev.abhinav.jpaPractice2.service.Table2ServiceException;
-import dev.abhinav.jpaPractice2.service.Table3ServiceException;
-import dev.abhinav.jpaPractice2.dto.Table1DTO;
-import dev.abhinav.jpaPractice2.dto.Table2DTO;
+import dev.abhinav.jpaPractice1.dto.Table1DTO;
+import dev.abhinav.jpaPractice1.dto.Table2DTO;
+import dev.abhinav.jpaPractice1.dto.Table3DTO;
+import dev.abhinav.jpaPractice1.service.Table1Service;
+import dev.abhinav.jpaPractice1.service.Table1ServiceException;
+import dev.abhinav.jpaPractice1.service.Table2Service;
+import dev.abhinav.jpaPractice1.service.Table2ServiceException;
+import dev.abhinav.jpaPractice1.service.Table3Service;
+import dev.abhinav.jpaPractice1.service.Table3ServiceException;
 
 @RestController
 @RequestMapping("/jpaPractice1To1")
-public class RestController2 {
+public class RestController1 {
 
 	@Autowired
 	Table3Service table3Service;

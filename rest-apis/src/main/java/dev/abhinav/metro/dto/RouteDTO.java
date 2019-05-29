@@ -5,8 +5,6 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dev.abhinav.metro.entities.Route;
-import dev.abhinav.metro.entities.Station;
-import dev.abhinav.metro.entities.Train;
 import lombok.Getter;
 import lombok.Setter;
 

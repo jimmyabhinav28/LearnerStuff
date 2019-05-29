@@ -1,4 +1,4 @@
-package dev.abhinav.jpaPractice2.entities;
+package dev.abhinav.jpaPractice1.entities;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "table2")
 public class Table2Entity {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "attribute1")
@@ -22,8 +22,8 @@ public class Table2Entity {
 
     //bidirectional one to one mapping
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @MapsId
-//    @JoinColumn(name = "table3_id", referencedColumnName = "id")
+//    @MapsId
+    @JoinColumn(name = "table3_id", referencedColumnName = "id")
     Table3Entity table3;
 
 }

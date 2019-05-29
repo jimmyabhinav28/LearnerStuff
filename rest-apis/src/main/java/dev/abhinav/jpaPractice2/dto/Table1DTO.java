@@ -1,6 +1,5 @@
 package dev.abhinav.jpaPractice2.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;

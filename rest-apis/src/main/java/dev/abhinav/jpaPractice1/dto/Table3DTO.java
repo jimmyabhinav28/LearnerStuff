@@ -1,6 +1,8 @@
-package dev.abhinav.jpaPractice.dto;
+package dev.abhinav.jpaPractice1.dto;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
@@ -16,10 +18,8 @@ public class Table3DTO {
 	@JsonProperty(value = "attribute1_value")
 	String attribute1;
 	
-	@JsonProperty("table1_entity")
-	Table1DTO table1dto;
-	
-	@JsonManagedReference
+	@JsonBackReference
+	@JsonInclude(Include.NON_NULL)
 	@JsonProperty("table2_entity")
 	Table2DTO table2dto;
 }

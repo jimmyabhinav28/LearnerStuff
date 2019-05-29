@@ -1,11 +1,12 @@
-package dev.abhinav.jpaPractice.service;
+package dev.abhinav.jpaPractice1.service;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import dev.abhinav.jpaPractice.entities.Table3Entity;
+import dev.abhinav.jpaPractice1.entities.Table3Entity;
+
 
 public interface Table3Repository extends JpaRepository<Table3Entity, Long>{
 	

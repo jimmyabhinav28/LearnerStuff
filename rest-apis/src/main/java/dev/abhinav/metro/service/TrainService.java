@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.abhinav.metro.dao.TrainDAO;
-import dev.abhinav.metro.dao.TrainNotFoundException;
 import dev.abhinav.metro.dto.TrainDTO;
 
 @Service

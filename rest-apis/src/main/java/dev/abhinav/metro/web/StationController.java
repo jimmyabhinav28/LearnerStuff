@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.abhinav.metro.dto.StationDTO;
-import dev.abhinav.metro.entities.Station;
 import dev.abhinav.metro.service.StationService;
 
 @RestController

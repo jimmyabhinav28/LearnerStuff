@@ -2,13 +2,11 @@ package dev.abhinav.restapis;
 
 import java.io.IOException;
 import java.util.Enumeration;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import dev.abhinav.jpaPractice2.entities.Table1Entity;
-import dev.abhinav.jpaPractice2.entities.Table2Entity;
 import dev.abhinav.jpaPractice2.entities.Table3Entity;
 import dev.abhinav.jpaPractice2.service.Table1Repository;
 import dev.abhinav.jpaPractice2.service.Table2Repository;

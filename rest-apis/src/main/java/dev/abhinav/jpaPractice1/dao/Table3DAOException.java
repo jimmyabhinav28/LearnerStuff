@@ -1,4 +1,4 @@
-package dev.abhinav.jpaPractice.dao;
+package dev.abhinav.jpaPractice1.dao;
 
 public class Table3DAOException extends Exception {
 	/**

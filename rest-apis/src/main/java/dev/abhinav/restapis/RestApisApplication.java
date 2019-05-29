@@ -9,25 +9,18 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"dev.abhinav.jpaPractice2"})
-@EntityScan(basePackages = {"dev.abhinav.jpaPractice2"})
-@EnableJpaRepositories(basePackages = {"dev.abhinav.jpaPractice2"})
-/*
- * @ComponentScan(basePackages = {"dev.abhinav.jpaPractice"})
- * 
- * @EntityScan(basePackages = {"dev.abhinav.jpaPractice"})
- * 
- * @EnableJpaRepositories(basePackages = {"dev.abhinav.jpaPractice"})
- */
+@ComponentScan(basePackages = { "dev.abhinav.jpaPractice2" })
+@EntityScan(basePackages = { "dev.abhinav.jpaPractice2" })
+@EnableJpaRepositories(basePackages = { "dev.abhinav.jpaPractice2" })
+
 public class RestApisApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RestApisApplication.class, args);
 	}
-	
+
 	@Bean
-	RestTemplate getRestTemplate()
-	{
+	RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}
 

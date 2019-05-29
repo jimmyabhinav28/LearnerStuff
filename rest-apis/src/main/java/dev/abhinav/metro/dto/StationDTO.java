@@ -2,13 +2,9 @@ package dev.abhinav.metro.dto;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import dev.abhinav.metro.entities.Station;
-import dev.abhinav.metro.entities.Train;
 import lombok.Getter;
 import lombok.Setter;
 

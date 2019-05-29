@@ -2,15 +2,9 @@ package dev.abhinav.metro.service;
 
 import java.sql.Date;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import dev.abhinav.metro.dao.StationDAO;
-import dev.abhinav.metro.dao.StationNotFoundException;
 import dev.abhinav.metro.dto.StationDTO;
 import dev.abhinav.metro.entities.Station;
 import dev.abhinav.metro.entities.StationEngineer;

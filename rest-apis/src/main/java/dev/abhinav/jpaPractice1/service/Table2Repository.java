@@ -1,11 +1,11 @@
-package dev.abhinav.jpaPractice2.service;
+package dev.abhinav.jpaPractice1.service;
 
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import dev.abhinav.jpaPractice2.entities.Table2Entity;
+import dev.abhinav.jpaPractice1.entities.Table2Entity;
 
 public interface Table2Repository extends JpaRepository<Table2Entity, Long> {
 	@Override

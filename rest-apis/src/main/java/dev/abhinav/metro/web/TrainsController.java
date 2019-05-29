@@ -6,10 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.abhinav.metro.dao.TrainNotFoundException;
 import dev.abhinav.metro.service.TrainService;
 import dev.abhinav.web.MetaData;
-import dev.abhinav.web.MetaDataCreateException;
 
 @RestController
 @RequestMapping("/metro")

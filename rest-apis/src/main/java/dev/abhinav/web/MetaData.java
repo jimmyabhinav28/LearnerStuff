@@ -3,8 +3,6 @@ package dev.abhinav.web;
 import java.util.Date;
 import java.util.UUID;
 
-import org.slf4j.MDC;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;

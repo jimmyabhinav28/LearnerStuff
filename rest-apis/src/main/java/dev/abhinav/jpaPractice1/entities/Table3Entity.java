@@ -1,4 +1,4 @@
-package dev.abhinav.jpaPractice.entities;
+package dev.abhinav.jpaPractice1.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -7,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,16 +25,7 @@ public class Table3Entity {
 	@Column(name = "attribute1")
 	String attribute1;
 
-	//unidirectional one to one
-	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	@JoinColumn(name = "table1_id",referencedColumnName = "id")
-	Table1Entity table1Entity;
-	
-	//bidirectional one to one mapping
-//	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-	@OneToOne(fetch = FetchType.EAGER)
-//	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "table2_id",referencedColumnName = "id")
-	Table2Entity table2Entity;
+	@OneToOne(mappedBy = "table3",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+	Table2Entity table2entity;	
 
 }

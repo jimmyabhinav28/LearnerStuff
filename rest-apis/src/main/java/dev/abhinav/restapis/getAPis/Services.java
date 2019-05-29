@@ -1,19 +1,14 @@
 package dev.abhinav.restapis.getAPis;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
-
 import dev.abhinav.restapis.getAPis.dto.MathsOperation;
 import dev.abhinav.restapis.getAPis.dto.MathsOperationsInCapsOnly;
 import dev.abhinav.restapis.getAPis.dto.MockyResponse1;
