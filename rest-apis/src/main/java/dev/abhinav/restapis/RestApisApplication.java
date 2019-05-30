@@ -9,9 +9,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "dev.abhinav.jpaPractice2" })
-@EntityScan(basePackages = { "dev.abhinav.jpaPractice2" })
-@EnableJpaRepositories(basePackages = { "dev.abhinav.jpaPractice2" })
+@ComponentScan(basePackages = { "dev.abhinav.jpaPractice3" })
+@EntityScan(basePackages = { "dev.abhinav.jpaPractice3" })
+@EnableJpaRepositories(basePackages = { "dev.abhinav.jpaPractice3" })
 
 public class RestApisApplication {
 

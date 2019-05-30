@@ -9,6 +9,7 @@ attribute1 varchar(20)
 )ENGINE=InnoDB ;
 
 
+--since the foreign key is not unique, the table structure permits one to many
 drop table if exists table1;
 create table table1
 (id bigint(10) primary key auto_increment,
@@ -17,6 +18,8 @@ table3_id bigint(10),
 CONSTRAINT FOREIGN KEY (table3_id) REFERENCES table3(id)
 )ENGINE=InnoDB ;
 
+
+--since the foreign key is not unique, the table structure permits one to many
 drop table if exists table2;
 create table table2
 (id bigint(10) primary key auto_increment,
