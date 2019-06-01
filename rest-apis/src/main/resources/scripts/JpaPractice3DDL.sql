@@ -1,3 +1,4 @@
+
 drop schema if exists jpaPractice3;
 create schema jpaPractice3;
 use jpaPractice3;
@@ -38,15 +39,23 @@ insert into table3(attribute1) values('table3entry3');
 insert into table3(attribute1) values('table3entry4');
 insert into table3(attribute1) values('table3entry5');
 
-insert into table1(attribute1,table3_id) values('table1entry1',1);
-insert into table1(attribute1,table3_id) values('table1entry2',2);
-insert into table1(attribute1,table3_id) values('table1entry3',3);
-insert into table1(attribute1,table3_id) values('table1entry4',4);
+insert into table1(attribute1,table3_id) values('table1entry1_1',1);
+insert into table1(attribute1,table3_id) values('table1entry2_1',2);
+insert into table1(attribute1,table3_id) values('table1entry3_1',3);
+insert into table1(attribute1,table3_id) values('table1entry4_1',4);
+insert into table1(attribute1,table3_id) values('table1entry1_2',1);
+insert into table1(attribute1,table3_id) values('table1entry2_2',2);
+insert into table1(attribute1,table3_id) values('table1entry3_2',3);
+insert into table1(attribute1,table3_id) values('table1entry4_2',4);
 
-insert into table2(attribute1,table3_id) values('table2entry1',1);
-insert into table2(attribute1,table3_id) values('table2entry2',2);
-insert into table2(attribute1,table3_id) values('table2entry3',3);
-insert into table2(attribute1,table3_id) values('table2entry4',4);
+insert into table2(attribute1,table3_id) values('table2entry1_1',1);
+insert into table2(attribute1,table3_id) values('table2entry2_1',2);
+insert into table2(attribute1,table3_id) values('table2entry3_1',3);
+insert into table2(attribute1,table3_id) values('table2entry4_1',4);
+insert into table2(attribute1,table3_id) values('table2entry1_2',1);
+insert into table2(attribute1,table3_id) values('table2entry2_2',2);
+insert into table2(attribute1,table3_id) values('table2entry3_2',3);
+insert into table2(attribute1,table3_id) values('table2entry4_2',4);
 
 
 commit;

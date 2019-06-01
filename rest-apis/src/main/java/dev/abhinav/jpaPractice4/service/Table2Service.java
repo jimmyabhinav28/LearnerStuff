@@ -1,11 +1,11 @@
-package dev.abhinav.jpaPractice3.service;
+package dev.abhinav.jpaPractice4.service;
 
-import dev.abhinav.jpaPractice3.dao.Table2DAO;
-import dev.abhinav.jpaPractice3.dao.Table3DAO;
-import dev.abhinav.jpaPractice3.dto.Table2DTO;
-import dev.abhinav.jpaPractice3.dto.Table3DTO;
-import dev.abhinav.jpaPractice3.entities.Table2Entity;
-import dev.abhinav.jpaPractice3.entities.Table3Entity;
+import dev.abhinav.jpaPractice4.dao.Table2DAO;
+import dev.abhinav.jpaPractice4.dao.Table3DAO;
+import dev.abhinav.jpaPractice4.dto.Table2DTO;
+import dev.abhinav.jpaPractice4.dto.Table3DTO;
+import dev.abhinav.jpaPractice4.entities.Table2Entity;
+import dev.abhinav.jpaPractice4.entities.Table3Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
