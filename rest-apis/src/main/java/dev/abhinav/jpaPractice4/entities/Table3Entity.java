@@ -19,16 +19,9 @@ public class Table3Entity {
 	@Column(name = "attribute1")
 	String attribute1;
 
-	//bidirection one to many, inverse side
-//	@OneToMany(mappedBy = "table3",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
-//	@OneToMany(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "table2_table3",
-			joinColumns = {@JoinColumn(name = "table3_id", insertable = false,
-			        updatable = false, referencedColumnName = "id")},
-			inverseJoinColumns = {@JoinColumn(name = "table2_id", insertable = false,
-			        updatable = false, referencedColumnName = "id")}
-			)
+	// bidirection one to many, inverse side
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	Set<Table2Entity> table2Entities;
 
 }

@@ -1,4 +1,4 @@
-package dev.abhinav.jpaPractice4.entities;
+package dev.ankita.interviewPractice1.OneToOneBidirectional.dao;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,10 +17,9 @@ public class Table2Entity {
     @Column(name = "attribute1")
     String attribute1;
 
-
-
-    //bidirectional many to one mapping
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    //bidirectional one to one mapping
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "table3_id", referencedColumnName = "id")
     Table3Entity table3;
 
 }

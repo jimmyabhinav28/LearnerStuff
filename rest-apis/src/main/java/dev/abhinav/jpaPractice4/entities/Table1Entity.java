@@ -7,8 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import javax.persistence.*;
 
 /**
- * This is a child entity this time around, and hence the owner of the one to one unidirectional relationship. The navigation is from 
- * table1 to table 3 then
+ * This is a child entity this time around, and hence the owner of the one to
+ * one unidirectional relationship. The navigation is from table1 to table 3
+ * then
+ * 
  * @author abhinav
  *
  */
@@ -16,23 +18,20 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Slf4j
-@Table(name="table1")
+@Table(name = "table1")
 public class Table1Entity {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
 
-@Column(name = "attribute1")
-String attribute1;
+	@Column(name = "attribute1")
+	String attribute1;
 
-@ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 //@JoinColumn(name = "table3_id",referencedColumnName = "id")
-@JoinTable(name = "table1_table3",
-joinColumns = {@JoinColumn(name = "table1_id", insertable = true,
-        updatable = true, referencedColumnName = "id")},
-inverseJoinColumns = {@JoinColumn(name = "table3_id", insertable = true,
-        updatable = true, referencedColumnName = "id")}
-)
-Table3Entity table3;
+	@JoinTable(name = "table1_table3", joinColumns = {
+			@JoinColumn(name = "table1_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "table3_id", referencedColumnName = "id") })
+	Table3Entity table3;
 
 }
