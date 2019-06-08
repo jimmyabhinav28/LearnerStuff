@@ -21,14 +21,14 @@ import java.util.Set;
 public class Table3Service {
 
 	@Autowired
-    Table3DAO table3DAO;
+	Table3DAO table3DAO;
 	@Autowired
-    Table1DAO table1DAO;
+	Table1DAO table1DAO;
 
 	public Table3DTO save(Table3DTO table3dto) {
 		Table3Entity entity = convertTable3DtoToTable3Entity(table3dto);
 		entity = table3DAO.save(entity);
-		return convertTable3EntityToTable3DTO(entity,true);
+		return convertTable3EntityToTable3DTO(entity, true);
 	}
 
 	public void deleteByAttribute1(String attribute1Value) {
@@ -39,7 +39,10 @@ public class Table3Service {
 	}
 
 	public void deleteById(Long id) {
-		table1DAO.delete(id); //note i had to do this while using MapsId. MapsId is not suitable for one-one unidirectional..you do not have a reference to table1 in Table3Entity, hence JPA will not generate select, update, create, delete queries for the same..let's test this in the @JoinColumn way of 1-to-1 as well
+		table1DAO.delete(id); // note i had to do this while using MapsId. MapsId is not suitable for one-one
+								// unidirectional..you do not have a reference to table1 in Table3Entity, hence
+								// JPA will not generate select, update, create, delete queries for the
+								// same..let's test this in the @JoinColumn way of 1-to-1 as well
 		table3DAO.deleteById(id);
 	}
 
@@ -47,7 +50,7 @@ public class Table3Service {
 		List<Table3DTO> table3dtos = new ArrayList<Table3DTO>();
 		List<Table3Entity> entities = table3DAO.getByAttribute1Value(attribute1Value);
 		for (Table3Entity entity : entities) {
-			Table3DTO dto = convertTable3EntityToTable3DTO(entity,true);
+			Table3DTO dto = convertTable3EntityToTable3DTO(entity, true);
 			table3dtos.add(dto);
 		}
 		return table3dtos;
@@ -56,14 +59,13 @@ public class Table3Service {
 	public Table3DTO getById(Long id) {
 		Table3DTO dto = null;
 		Table3Entity entity = table3DAO.getById(id);
-		log.info("number of related entities "+entity.getTable2Entities().size());
-		Set<Table2Entity> table2Entities=entity.getTable2Entities();
-		Set<Table2DTO> table2DTOS=new HashSet<>();
-		for(Table2Entity table2Entity: table2Entities)
-		{
-			table2DTOS.add(Table2Service.convertTable2EntityToTable2DTO(table2Entity,null));
+		log.info("number of related entities " + entity.getTable2Entities().size());
+		Set<Table2Entity> table2Entities = entity.getTable2Entities();
+		Set<Table2DTO> table2DTOS = new HashSet<>();
+		for (Table2Entity table2Entity : table2Entities) {
+			table2DTOS.add(Table2Service.convertTable2EntityToTable2DTO(table2Entity, null));
 		}
-		dto = convertTable3EntityToTable3DTO(entity,table2DTOS);
+		dto = convertTable3EntityToTable3DTO(entity, table2DTOS);
 		return dto;
 	}
 
@@ -75,23 +77,40 @@ public class Table3Service {
 			e.printStackTrace();
 			throw new Table3ServiceException("error updating table3 record", e);
 		}
-		return convertTable3EntityToTable3DTO(entity,true);
+		return convertTable3EntityToTable3DTO(entity, true);
 	}
 
-	public static Table3DTO convertTable3EntityToTable3DTO(Table3Entity entity,boolean convertTable2EntitiesToDTOs) {
+	public static Table3DTO convertTable3EntityToTable3DTO(Table3Entity entity, boolean convertTable2EntitiesToDTOs) {
 		Table3DTO dto = new Table3DTO();
 		dto.setAttribute1(entity.getAttribute1());
 		dto.setId(entity.getId());
 		if (entity.getTable2Entities() != null && convertTable2EntitiesToDTOs) {
 			dto.setTable2DTOS(new HashSet<>());
-			for(Table2Entity table2Entity: entity.getTable2Entities()) {
-				dto.getTable2DTOS().add(
-						Table2Service.convertTable2EntityToTable2DTO(table2Entity, dto));
+			for (Table2Entity table2Entity : entity.getTable2Entities()) {
+				dto.getTable2DTOS().add(Table2Service.convertTable2EntityToTable2DTO(table2Entity, dto));
 			}
 		}
 		return dto;
 	}
 
+	public static Set<Table3DTO> convertTable3EntityToTable3DTO(Set<Table3Entity> entities,
+			boolean convertTable2EntitiesToDTOs) {
+		Set<Table3DTO> dtos = new HashSet<Table3DTO>();
+		for (Table3Entity entity : entities) {
+			Table3DTO dto = new Table3DTO();
+			dto.setAttribute1(entity.getAttribute1());
+			dto.setId(entity.getId());
+			if (entity.getTable2Entities() != null && convertTable2EntitiesToDTOs) {
+				dto.setTable2DTOS(new HashSet<>());
+				for (Table2Entity table2Entity : entity.getTable2Entities()) {
+					dto.getTable2DTOS().add(Table2Service.convertTable2EntityToTable2DTO(table2Entity, dto));
+				}
+			}
+			dtos.add(dto);
+		}
+
+		return dtos;
+	}
 
 	public static Table3DTO convertTable3EntityToTable3DTO(Table3Entity entity, Table2DTO table2DTO) {
 		Table3DTO dto = new Table3DTO();
@@ -114,12 +133,11 @@ public class Table3Service {
 		return dto;
 	}
 
-
 	public static Table3Entity convertTable3DtoToTable3Entity(Table3DTO dto, Set<Table2Entity> table2Entities) {
 		Table3Entity entity = new Table3Entity();
 		entity.setAttribute1(dto.getAttribute1());
 		entity.setId(dto.getId());
-		if (table2Entities!= null)
+		if (table2Entities != null)
 			entity.setTable2Entities(table2Entities);
 		return entity;
 	}
@@ -128,13 +146,12 @@ public class Table3Service {
 		Table3Entity entity = new Table3Entity();
 		entity.setAttribute1(dto.getAttribute1());
 		entity.setId(dto.getId());
-		if (table2Entity!= null) {
+		if (table2Entity != null) {
 			entity.setTable2Entities(new HashSet<Table2Entity>());
 			entity.getTable2Entities().add(table2Entity);
 		}
 		return entity;
 	}
-
 
 	public static Table3Entity convertTable3DtoToTable3Entity(Table3DTO dto) {
 		Table3Entity entity = new Table3Entity();
@@ -147,6 +164,20 @@ public class Table3Service {
 		}
 		return entity;
 	}
+
+	public static Set<Table3Entity> convertTable3DtoToTable3Entity(Set<Table3DTO> dtos) {
+		Set<Table3Entity> entities = new HashSet<Table3Entity>();
+		for (Table3DTO dto : dtos) {
+			Table3Entity entity = new Table3Entity();
+			entity.setAttribute1(dto.getAttribute1());
+			entity.setId(dto.getId());
+			if (dto.getTable2DTOS() != null) {
+				entity.setTable2Entities(new HashSet<Table2Entity>());
+				for (Table2DTO table2DTO : dto.getTable2DTOS())
+					entity.getTable2Entities().add(Table2Service.convertTable2DTOToTable2Entity(table2DTO, entity));
+			}
+		}
+
+		return entity;
+	}
 }
-
-

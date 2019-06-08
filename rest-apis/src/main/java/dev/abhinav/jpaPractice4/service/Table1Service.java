@@ -57,7 +57,7 @@ public class Table1Service {
         Table1DTO dto = new Table1DTO();
         dto.setAttribute1(entity.getAttribute1());
         if (entity.getTable3() != null)
-            dto.setTable3dto(Table3Service.convertTable3EntityToTable3DTO(entity.getTable3(),false));
+            dto.setTable3dtos(Table3Service.convertTable3EntityToTable3DTO(entity.getTable3(),false));
         dto.setId(entity.getId());
         return dto;
     }

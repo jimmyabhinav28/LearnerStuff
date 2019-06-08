@@ -3,6 +3,8 @@ package dev.abhinav.jpaPractice4.entities;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Getter
@@ -17,10 +19,11 @@ public class Table2Entity {
     @Column(name = "attribute1")
     String attribute1;
 
-
-
     //bidirectional many to one mapping
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    Table3Entity table3;
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "table2_table3", joinColumns = {
+			@JoinColumn(name = "table2_id", referencedColumnName = "id") }, inverseJoinColumns = {
+					@JoinColumn(name = "table3_id", referencedColumnName = "id") })
+    Set<Table3Entity> table3;
 
 }

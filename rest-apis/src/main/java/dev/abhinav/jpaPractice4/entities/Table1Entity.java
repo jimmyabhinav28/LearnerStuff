@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Set;
+
 import javax.persistence.*;
 
 /**
@@ -27,11 +29,11 @@ public class Table1Entity {
 	@Column(name = "attribute1")
 	String attribute1;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
-//@JoinColumn(name = "table3_id",referencedColumnName = "id")
+	// arbitrarily making table1 as the owner of the relationship
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
 	@JoinTable(name = "table1_table3", joinColumns = {
 			@JoinColumn(name = "table1_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "table3_id", referencedColumnName = "id") })
-	Table3Entity table3;
+	Set<Table3Entity> table3;
 
 }

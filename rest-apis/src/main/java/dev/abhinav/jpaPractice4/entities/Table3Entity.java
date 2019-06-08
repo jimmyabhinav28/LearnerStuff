@@ -21,7 +21,7 @@ public class Table3Entity {
 
 	// bidirection one to many, inverse side
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.ALL }, mappedBy = "table3")
 	Set<Table2Entity> table2Entities;
 
 }

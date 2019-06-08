@@ -1,5 +1,7 @@
 package dev.abhinav.jpaPractice4.dto;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -20,5 +22,5 @@ public class Table2DTO {
 //	@JsonManagedReference
 	@JsonInclude(Include.NON_NULL)
 	@JsonProperty("table3_entity")
-    Table3DTO table3dto;
+    Set<Table3DTO> table3dtos;
 }

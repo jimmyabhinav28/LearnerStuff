@@ -1,4 +1,4 @@
-
+-- many to many relationships
 drop schema if exists jpaPractice4;
 create schema jpaPractice4;
 use jpaPractice4;
@@ -22,6 +22,7 @@ drop table if exists table1_table3;
 create table table1_table3
 (table1_id bigint(10),
 table3_id bigint(10), 
+PRIMARY KEY(table1_id,table3_id),
 CONSTRAINT FOREIGN KEY (table3_id) REFERENCES table3(id),
 CONSTRAINT FOREIGN KEY (table1_id) REFERENCES table1(id)
 )ENGINE=InnoDB ;
@@ -36,7 +37,8 @@ attribute1 varchar(20)
 drop table if exists table2_table3;
 create table table2_table3
 (table2_id bigint(10),
-table3_id bigint(10), 
+table3_id bigint(10),
+PRIMARY KEY(table2_id,table3_id),
 CONSTRAINT FOREIGN KEY (table3_id) REFERENCES table3(id),
 CONSTRAINT FOREIGN KEY (table2_id) REFERENCES table2(id)
 )ENGINE=InnoDB ;

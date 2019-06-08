@@ -1,5 +1,7 @@
 package dev.abhinav.jpaPractice4.dto;
 
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +17,6 @@ public class Table1DTO {
 	String attribute1;
 	
 	@JsonProperty("table3")
-    Table3DTO table3dto;
+    Set<Table3DTO> table3dtos;
 
 }
