@@ -9,5 +9,5 @@ import dev.ankita.jpainterview.entities.Table3;
 
 public interface Table3Repository  extends JpaRepository<Table1,Long>{
 	
-	List<Table3> getByAttribute1Name(String attribute1Value);
+	List<Table3> findByAttribute1(String attribute1Value);
 }

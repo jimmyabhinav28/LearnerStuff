@@ -15,7 +15,7 @@ public class Table3Service {
 	public List<Table3> findByAttribute1(String attributeName){
 		
 		List<Table3> table3 = null;
-		table3 = table3Repository.getByAttribute1Name(attributeName);
+		table3 = table3Repository.findByAttribute1(attributeName);
 		return table3;
 	}
 
