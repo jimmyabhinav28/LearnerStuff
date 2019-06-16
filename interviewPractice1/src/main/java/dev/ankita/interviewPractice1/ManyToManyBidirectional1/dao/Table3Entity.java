@@ -26,6 +26,7 @@ public class Table3Entity {
 
 //	@JsonBackReference
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL }, mappedBy = "table3")
+//	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "table3")
 	Set<Table1Entity> table1Entities;
 
 }

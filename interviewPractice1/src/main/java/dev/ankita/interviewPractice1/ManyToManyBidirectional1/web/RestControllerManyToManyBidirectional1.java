@@ -1,5 +1,8 @@
 package dev.ankita.interviewPractice1.ManyToManyBidirectional1.web;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.ankita.interviewPractice1.ManyToManyBidirectional1.dao.Table1DAO;
 import dev.ankita.interviewPractice1.ManyToManyBidirectional1.dao.Table1DAOException;
 import dev.ankita.interviewPractice1.ManyToManyBidirectional1.dao.Table1Entity;
+import dev.ankita.interviewPractice1.ManyToManyBidirectional1.dao.Table3Entity;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -28,16 +32,27 @@ public class RestControllerManyToManyBidirectional1 {
 	ModelMapper modelMapper;
 	
 	@GetMapping(path="/interviewPractice1/ManyToManyBidirectional1/getTable1Record/{id}")
-	public Table1Entity getTable1RecordById(@PathVariable(name = "id") Long id)
+	public Table1DTO getTable1RecordById(@PathVariable(name = "id") Long id)
 	{
+		Table1DTO toreturn=new Table1DTO();
 		Table1Entity result=null;
 		result=table1Dao.getTable1EntityById(id);
-		return result;
-		//return modelMapper.map(result,Table1DTO.class);
+//		Set<Table3DTO> table3Dtos=new HashSet<Table3DTO>();
+//		for(Table3Entity entity: result.getTable3())
+//		{
+//			Table3DTO dto=new Table3DTO();
+//			dto=modelMapper.map(entity,Table3DTO.class);
+//			table3Dtos.add(dto);
+//		}
+		toreturn= modelMapper.map(result,Table1DTO.class);
+//		toreturn.getTable3().clear();
+//		toreturn.setTable3(table3Dtos);
+		
+		return toreturn;
 	}
 	
 	@PostMapping(path="/interviewPractice1/ManyToManyBidirectional1/createTable1Record")
-	public Table1Entity createTable1Record(@Valid @RequestBody Table1Entity requestBody)
+	public Table1DTO createTable1Record(@Valid @RequestBody Table1Entity requestBody)
 	{
 		Table1Entity result=null;
 		result=table1Dao.save(requestBody);
@@ -45,7 +60,7 @@ public class RestControllerManyToManyBidirectional1 {
 	}
 	
 	@PutMapping(path="/interviewPractice1/ManyToManyBidirectional1/updateTable1Record")
-	public Table1Entity updateTable1Record(@Valid @RequestBody Table1Entity requestBody) throws Table1DAOException
+	public Table1DTO updateTable1Record(@Valid @RequestBody Table1Entity requestBody) throws Table1DAOException
 	{
 		Table1Entity result=null;
 		result=table1Dao.update(requestBody);
