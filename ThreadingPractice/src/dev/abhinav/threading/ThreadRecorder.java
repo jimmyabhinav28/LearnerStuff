@@ -6,6 +6,12 @@ public class ThreadRecorder {
 	
 	private static HashMap<String, Thread> threadRecord=new HashMap<String, Thread>();
 	
+	private static Object commonObject=new Object();
+	
+	public static Object getCommonObject()
+	{
+		return commonObject;
+	}
 	public static void addThreadToRecorder(String threadName,Thread t)
 	{
 		threadRecord.put(threadName, t);
